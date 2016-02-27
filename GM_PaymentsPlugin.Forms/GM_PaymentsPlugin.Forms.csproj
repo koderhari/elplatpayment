@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1DB04D61-8B47-45B0-9620-D0CBE3BB4130}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GM_PaymentsPlugin.Forms</RootNamespace>
+    <AssemblyName>GM_PaymentsPlugin.Forms</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.2.3\lib\net40\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutorizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutorizationForm.Designer.cs">
+      <DependentUpon>AutorizationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateOrUpdatePaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateOrUpdatePaymentForm.Designer.cs">
+      <DependentUpon>CreateOrUpdatePaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\FormatHelper.cs" />
+    <Compile Include="Infrastructure\AuthenticationService.cs" />
+    <Compile Include="Infrastructure\Commands\CityCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CheckPayCommand.cs" />
+    <Compile Include="Infrastructure\Commands\GetPayKindCommand.cs" />
+    <Compile Include="Infrastructure\ILogger.cs" />
+    <Compile Include="Infrastructure\LoggerNLog.cs" />
+    <Compile Include="Infrastructure\LogManager.cs" />
+    <Compile Include="Infrastructure\MappingExtension.cs" />
+    <Compile Include="Infrastructure\PaymentService.cs" />
+    <Compile Include="Infrastructure\SettingService.cs" />
+    <Compile Include="PaymentsCartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentsCartForm.Designer.cs">
+      <DependentUpon>PaymentsCartForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecievePaymentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecievePaymentsForm.Designer.cs">
+      <DependentUpon>RecievePaymentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SplashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashForm.Designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ViewModelBase .cs" />
+    <Compile Include="ViewModels\PaymentViewModel.cs" />
+    <Compile Include="ViewModels\PaymentCartItemViewModel.cs" />
+    <Compile Include="ViewModels\PaymentCounterViewModel.cs" />
+    <Compile Include="ViewModels\SelectListItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GM_PaymentsPlugin.DataLayer\GM_PaymentsPlugin.DataLayer.csproj">
+      <Project>{4CAF8F20-BE26-4F32-8F4A-DD1D126A60A5}</Project>
+      <Name>GM_PaymentsPlugin.DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AutorizationForm.resx">
+      <DependentUpon>AutorizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateOrUpdatePaymentForm.resx">
+      <DependentUpon>CreateOrUpdatePaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentsCartForm.resx">
+      <DependentUpon>PaymentsCartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecievePaymentsForm.resx">
+      <DependentUpon>RecievePaymentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\GM_PaymentsPlugin.DataLayer.Entities.Payment.datasource" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
