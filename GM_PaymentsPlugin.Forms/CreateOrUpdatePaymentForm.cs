@@ -27,6 +27,7 @@ namespace GM_PaymentsPlugin.Forms
         bool IsEditMode = false;
         string oldAccountValue = "";
         List<SelectListItem> _currentServices;
+        Int16 test=0;
 
         public Payment Payment
         {
