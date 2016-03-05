@@ -46,8 +46,8 @@ namespace _TestHostApp
 
             if (payments.Count >= 2)
             {
-               // plugin.PaymentConfirm(new PaymentKeyInfo() { PaymentId = payments[0].PaymentId });
-                //plugin.PaymentCancel(new PaymentKeyInfo() { PaymentId = payments[1].PaymentId });
+                 plugin.PaymentConfirm(new PaymentKeyInfo() { PaymentId = payments[0].PaymentId });
+                 plugin.PaymentCancel(new PaymentKeyInfo() { PaymentId = payments[1].PaymentId });
                 //plugin.PaymentCancel(new PaymentKeyInfo() { PaymentId = payments[0].PaymentId });
             }
         }

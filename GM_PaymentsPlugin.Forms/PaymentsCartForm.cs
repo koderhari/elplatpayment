@@ -59,6 +59,12 @@ namespace GM_PaymentsPlugin.Forms
             datagridPayments.DataSource = _cartPayments;
         }
 
+
+        public void DisplayError(string message)
+        {
+            lbError.Visible = true;
+            lbError.Text = message;
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddPayment();
@@ -176,11 +182,23 @@ namespace GM_PaymentsPlugin.Forms
             var payForDelete = GetSelectedPayment();
             if (payForDelete == null) return;
             var id = payForDelete.Id;
-            _paymentsService.DeletePayment(id);
-            //_payments = _paymentsService.GetPayments();
-            _cartPayments.Remove(_cartPayments.First(x => x.Id == id));
-            
-            _payments.Remove(_payments.First(x => x.Id == id));
+            try
+            {
+                SplashForm.ShowSplashScreen();
+                _paymentsService.DeletePayment(id);
+                //_payments = _paymentsService.GetPayments();
+                _cartPayments.Remove(_cartPayments.First(x => x.Id == id));
+                _payments.Remove(_payments.First(x => x.Id == id));
+            }
+            catch (CancelPayException ex)
+            {
+                DisplayError(ex.Message);
+                
+            }
+            finally
+            {
+                SplashForm.CloseForm();
+            }
         }
 
         

@@ -233,7 +233,25 @@ namespace GM_PaymentsPlugin.Forms.Infrastructure
 
         public void DeletePayment(string id)
         {
-           
+            using (var command = new CancelPayCommand(_settingService.GetServerIP(),
+                                                  _settingService.GetPort(),
+                                                  _currentUser,
+                                                  new List<Payment>() { new Payment { TransactionId = id } }))
+            {
+                command.Execute();
+                if (!command.Success)
+                {
+                    throw new CancelPayException(command.ErrorMessage);
+                }
+                else
+                {
+                    if (command.CancelPayCommandResults.Count == 0)
+                        throw new CancelPayException("Сервер не вернул результатов");
+                    if (!command.CancelPayCommandResults.First().Success)
+                        throw new CancelPayException(String.Format("{0}:{1}", command.CancelPayCommandResults.First().ErrorCode, command.CancelPayCommandResults.First().ErrorMessage));
+                }
+
+            }
         }
 
          public void CancelPayment(string transactionId)

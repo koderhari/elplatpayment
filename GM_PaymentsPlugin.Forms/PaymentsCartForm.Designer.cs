@@ -42,6 +42,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.cartPanel = new System.Windows.Forms.Panel();
             this.datagridPayments = new System.Windows.Forms.DataGridView();
+            this.lbError = new System.Windows.Forms.Label();
             this.headerPanel.SuspendLayout();
             this.commandPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -54,6 +55,7 @@
             // headerPanel
             // 
             this.headerPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.headerPanel.Controls.Add(this.lbError);
             this.headerPanel.Controls.Add(this.label1);
             this.headerPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerPanel.Location = new System.Drawing.Point(0, 0);
@@ -214,6 +216,18 @@
             this.datagridPayments.Size = new System.Drawing.Size(571, 495);
             this.datagridPayments.TabIndex = 2;
             // 
+            // lbError
+            // 
+            this.lbError.AutoSize = true;
+            this.lbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
+            this.lbError.ForeColor = System.Drawing.Color.Red;
+            this.lbError.Location = new System.Drawing.Point(3, 31);
+            this.lbError.Name = "lbError";
+            this.lbError.Size = new System.Drawing.Size(64, 25);
+            this.lbError.TabIndex = 1;
+            this.lbError.Text = "label2";
+            this.lbError.Visible = false;
+            // 
             // PaymentsCartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -262,5 +276,6 @@
         private System.Windows.Forms.DataGridView datagridPayments;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Label lbError;
     }
 }
