@@ -57,6 +57,8 @@
     <Compile Include="AutorizationForm.Designer.cs">
       <DependentUpon>AutorizationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Commands\CancelPayCommand.cs" />
+    <Compile Include="Infrastructure\Commands\ConfirmPayCommand .cs" />
     <Compile Include="Infrastructure\Commands\DoPayCommand .cs" />
     <Compile Include="SearchForm.cs">
       <SubType>Form</SubType>

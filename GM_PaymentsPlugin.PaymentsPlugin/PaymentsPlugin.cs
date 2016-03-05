@@ -112,6 +112,7 @@ namespace GM_PaymentsPlugin.PaymentsPlugin
             catch (Exception ex)
             {
                 LogManager.CurrentLogger.Error("PaymentConfirm", ex);
+                throw ex;
             }
         }
 
@@ -131,6 +132,7 @@ namespace GM_PaymentsPlugin.PaymentsPlugin
             catch (Exception ex)
             {
                 LogManager.CurrentLogger.Error("PaymentCancel", ex);
+                throw ex;
             }
         }
     }

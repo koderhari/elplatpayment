@@ -56,7 +56,7 @@ namespace GM_PaymentsPlugin.PaymentsPlugin.Helpers
             var authService = new AuthenticationService(setServ);
             
             var paymentsService = new PaymentService(authService.CurrentUser, setServ);
-            paymentsService.DeletePayment(paymentKeyInfo.PaymentId);
+            paymentsService.CancelPayment(paymentKeyInfo.PaymentId);
         }
 
         #region Вспомогательные методы

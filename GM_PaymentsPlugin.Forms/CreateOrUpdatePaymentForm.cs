@@ -17,7 +17,7 @@ using GM_PaymentsPlugin.Forms.Infrastructure.Commands;
 namespace GM_PaymentsPlugin.Forms
 {
     public partial class CreateOrUpdatePaymentForm : Form
-    {
+    { 
 
         private Payment _payment;
         private PaymentViewModel _paymentViewModel;
@@ -127,16 +127,16 @@ namespace GM_PaymentsPlugin.Forms
         {
             if (IsValid())
             {
-                _payment = _paymentViewModel.ToModel();
+                var payment = _paymentViewModel.ToModel();
                 //_payment.ClientFullName = _paymentViewModel.PersonalNumber;
                 try
                 {
                     SplashForm.ShowSplashScreen();
                     if (!IsEditMode)
                     {
-                        _paymentService.AddPay(_payment);
+                        _paymentService.AddPay(payment);
                     }
-
+                    _payment = payment;
                     this.Close();
                 }
                 catch (DoPayException exception)

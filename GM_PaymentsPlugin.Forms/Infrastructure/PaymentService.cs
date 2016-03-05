@@ -27,6 +27,22 @@ namespace GM_PaymentsPlugin.Forms.Infrastructure
     }
 
 
+
+    public class ConfirmPayException : Exception
+    {
+        public ConfirmPayException(string message)
+            : base(message)
+        { }
+    }
+
+        public class CancelPayException : Exception
+    {
+            public CancelPayException(string message)
+            : base(message)
+        { }
+    }
+
+
     
 
     
@@ -217,15 +233,53 @@ namespace GM_PaymentsPlugin.Forms.Infrastructure
 
         public void DeletePayment(string id)
         {
-           // GetPayments().Remove(GetPayments().First(x => x.Id == id));
-            
-
-            //clear cache pay
+           
         }
 
-        public void ConfirmPay(string id)
+         public void CancelPayment(string transactionId)
+         {
+            using (var command = new CancelPayCommand(_settingService.GetServerIP(),
+                                                 _settingService.GetPort(),
+                                                 _currentUser,
+                                                 new List<Payment>() { new Payment { TransactionId = transactionId } }))
+            {
+                command.Execute();
+                if (!command.Success)
+                {
+                    throw new CancelPayException(command.ErrorMessage);
+                }
+                else
+                {
+                    if (command.CancelPayCommandResults.Count == 0)
+                        throw new CancelPayException("Сервер не вернул результатов");
+                    if (!command.CancelPayCommandResults.First().Success)
+                        throw new CancelPayException(String.Format("{0}:{1}", command.CancelPayCommandResults.First().ErrorCode, command.CancelPayCommandResults.First().ErrorMessage));
+                }
+
+            }
+        }
+
+        public void ConfirmPay(string transactionId)
         {
-            //cleat cache pay
+            using (var command = new ConfirmPay(_settingService.GetServerIP(), 
+                                                _settingService.GetPort(), 
+                                                _currentUser, 
+                                                new List<Payment>() { new Payment { TransactionId = transactionId } }))
+            {
+                command.Execute();
+                if (!command.Success)
+                {
+                    throw new ConfirmPayException(command.ErrorMessage);
+                }
+                else
+                {
+                    if (command.ConfirmPayCommandResults.Count == 0)
+                        throw new ConfirmPayException("Сервер не вернул результатов");
+                    if (!command.ConfirmPayCommandResults.First().Success)
+                        throw new ConfirmPayException(String.Format("{0}:{1}", command.ConfirmPayCommandResults.First().ErrorCode, command.ConfirmPayCommandResults.First().ErrorMessage));
+                }
+
+            }
         }
         #endregion
 
