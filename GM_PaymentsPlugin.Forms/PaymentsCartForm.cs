@@ -116,6 +116,20 @@ namespace GM_PaymentsPlugin.Forms
                 this.Close();
                 e.SuppressKeyPress = true;
             }
+
+            if (e.KeyCode == Keys.F1)
+            {
+                FindService();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void FindService()
+        {
+            using (var searchForm = new SearchForm(_paymentsService))
+            {
+                searchForm.ShowDialog();
+            }
         }
 
 
@@ -176,7 +190,10 @@ namespace GM_PaymentsPlugin.Forms
             DeletePayment();
         }
 
-
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            FindService();
+        }
 
         #region Utils
         private PaymentCartItemViewModel GetSelectedPayment()
@@ -193,6 +210,8 @@ namespace GM_PaymentsPlugin.Forms
             else return null;
         }
         #endregion
+
+
     }
 
     public class PaymentsCartFormSettings

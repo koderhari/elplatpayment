@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationConfiguration.cs" />
     <Compile Include="Entities\AccountInfo.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\PaymentCounter.cs" />
@@ -54,23 +53,12 @@
     <Compile Include="Entities\PaymentOld.cs" />
     <Compile Include="Entities\Counter.cs" />
     <Compile Include="Entities\VendorService.cs" />
-    <Compile Include="Migrations\201408142330327_Initial.cs" />
-    <Compile Include="Migrations\201408142330327_Initial.Designer.cs">
-      <DependentUpon>201408142330327_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="PaymentsContext.cs" />
     <Compile Include="Entities\PaymentType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Vendor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201408142330327_Initial.resx">
-      <DependentUpon>201408142330327_Initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

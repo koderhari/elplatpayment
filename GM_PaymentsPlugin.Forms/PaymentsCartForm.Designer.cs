@@ -141,6 +141,7 @@
             this.btnSearch.TabStop = false;
             this.btnSearch.Text = "F1 - выбор";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // flowLayoutPanelCartCommand
             // 

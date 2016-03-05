@@ -57,6 +57,12 @@
     <Compile Include="AutorizationForm.Designer.cs">
       <DependentUpon>AutorizationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchForm.Designer.cs">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateOrUpdatePaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,12 +87,6 @@
       <DependentUpon>PaymentsCartForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecievePaymentsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RecievePaymentsForm.Designer.cs">
-      <DependentUpon>RecievePaymentsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="SplashForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,14 +109,14 @@
     <EmbeddedResource Include="AutorizationForm.resx">
       <DependentUpon>AutorizationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SearchForm.resx">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateOrUpdatePaymentForm.resx">
       <DependentUpon>CreateOrUpdatePaymentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PaymentsCartForm.resx">
       <DependentUpon>PaymentsCartForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RecievePaymentsForm.resx">
-      <DependentUpon>RecievePaymentsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>

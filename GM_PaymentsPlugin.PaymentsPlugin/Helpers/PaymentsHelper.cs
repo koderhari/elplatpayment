@@ -64,37 +64,37 @@ namespace GM_PaymentsPlugin.PaymentsPlugin.Helpers
         /// <summary>
         /// Конфигурация для формы приема платежей
         /// </summary>
-        private static RecievePaymentsFormSettings GetRecievePaymentsFormSettings(RecievePaymentParameters parameters,
-            PaymentsContext context)
-        {
-            // Подготовим конфигурацию формы
-            var formSettings = new RecievePaymentsFormSettings()
-            {
-                IsMultiMode = parameters.IsMultiMode
-            };
+        //private static RecievePaymentsFormSettings GetRecievePaymentsFormSettings(RecievePaymentParameters parameters,
+        //    PaymentsContext context)
+        //{
+        //    // Подготовим конфигурацию формы
+        //    var formSettings = new RecievePaymentsFormSettings()
+        //    {
+        //        IsMultiMode = parameters.IsMultiMode
+        //    };
 
-            formSettings.AvailablePaymentTypes = context.PaymentTypes.ToList();
-            formSettings.AvailableVendors = context.Vendors.ToList();
+        //    formSettings.AvailablePaymentTypes = context.PaymentTypes.ToList();
+        //    formSettings.AvailableVendors = context.Vendors.ToList();
 
-            // Согласно функциональному дизайну в данном случае есть только один поставщик и один тип перевода
-            //formSettings.CurrentPaymentType = context.PaymentTypes.FirstOrDefault(p => p.PaymentTypeId == "1");
-            //formSettings.CurrentVendor = context.Vendors.FirstOrDefault();
+        //    // Согласно функциональному дизайну в данном случае есть только один поставщик и один тип перевода
+        //    //formSettings.CurrentPaymentType = context.PaymentTypes.FirstOrDefault(p => p.PaymentTypeId == "1");
+        //    //formSettings.CurrentVendor = context.Vendors.FirstOrDefault();
 
-            formSettings.CurrentPaymentType =
-                context.PaymentTypes.FirstOrDefault(p => p.PaymentTypeId == ((int) parameters.PaymentType).ToString());
+        //    formSettings.CurrentPaymentType =
+        //        context.PaymentTypes.FirstOrDefault(p => p.PaymentTypeId == ((int) parameters.PaymentType).ToString());
 
-            if (parameters.VendorKeyInfo != null &&
-                !String.IsNullOrEmpty(parameters.VendorKeyInfo.INN) &&
-                !String.IsNullOrEmpty(parameters.VendorKeyInfo.KPP))
-            {
-                formSettings.CurrentVendor = context.Vendors.FirstOrDefault(v =>
-                    v.INN.Equals(parameters.VendorKeyInfo.INN) &&
-                    v.KPP.Equals(parameters.VendorKeyInfo.KPP) &&
-                    v.PaymentTypeId.Equals(((int) parameters.PaymentType).ToString()));
-            }
+        //    if (parameters.VendorKeyInfo != null &&
+        //        !String.IsNullOrEmpty(parameters.VendorKeyInfo.INN) &&
+        //        !String.IsNullOrEmpty(parameters.VendorKeyInfo.KPP))
+        //    {
+        //        formSettings.CurrentVendor = context.Vendors.FirstOrDefault(v =>
+        //            v.INN.Equals(parameters.VendorKeyInfo.INN) &&
+        //            v.KPP.Equals(parameters.VendorKeyInfo.KPP) &&
+        //            v.PaymentTypeId.Equals(((int) parameters.PaymentType).ToString()));
+        //    }
 
-            return formSettings;
-        }
+        //    return formSettings;
+        //}
 
         /// <summary>
         /// Маппинг платежа в структуру понятную хосту

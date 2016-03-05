@@ -33,7 +33,7 @@ namespace GM_PaymentsPlugin.PaymentsPlugin
         {
             try
             {
-                ApplicationConfiguration.Instance.ConnectionString = Host.GetConnectionString();
+                //ApplicationConfiguration.Instance.ConnectionString = Host.GetConnectionString();
                 return VendorsHelper.DoGetVendorsList();
             }
             catch (Exception ex)
@@ -59,7 +59,7 @@ namespace GM_PaymentsPlugin.PaymentsPlugin
         {
             try
             {
-                ApplicationConfiguration.Instance.ConnectionString = Host.GetConnectionString();
+                //ApplicationConfiguration.Instance.ConnectionString = Host.GetConnectionString();
                 return VendorsHelper.DoFindVendor(searchInfo);
             }
             catch (Exception ex)

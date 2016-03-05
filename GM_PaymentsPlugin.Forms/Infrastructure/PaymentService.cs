@@ -199,5 +199,26 @@ namespace GM_PaymentsPlugin.Forms.Infrastructure
         }
         #endregion
 
+
+        public List<AccountInfo> SearchAccountServices(string barcode)
+        {
+            var result = new List<AccountInfo>();
+            result.Add(new AccountInfo()
+            {
+                Address = "Address 1",
+                Amount = 100.2M,
+                FullName="Ivan Ivanov",
+                PersonalNumber="12345"
+            });
+            result.Add(new AccountInfo()
+            {
+                Address = "Address 2",
+                Amount = 122.2M,
+                FullName = "ZIvan ZIvanov",
+                PersonalNumber = "555"
+            });
+
+            return result;
+        }
     } 
 }
