@@ -13,6 +13,8 @@ namespace GM_PaymentsPlugin.Forms.Infrastructure.Commands
         protected static char delimiterL1= Convert.ToChar(2);
         protected static char delimiterL2=Convert.ToChar(1);
         protected static char delimiterL3 = Convert.ToChar(3);
+        protected static string counterHeader = "#СЧ";
+        
         public string ErrorMessage { get; set; }
         public bool Success { get; set; }
 

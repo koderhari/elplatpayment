@@ -63,8 +63,8 @@ namespace GM_PaymentsPlugin.Forms
 
             tbAccount.DataBindings.Add("Text", _paymentViewModel, "PersonalNumber", false, DataSourceUpdateMode.OnPropertyChanged);
             tbAmount.DataBindings.Add("Text", _paymentViewModel, "Amount", false, DataSourceUpdateMode.OnValidation,0,"0.00");
-            
-
+            lbFioClient.DataBindings.Add("Text", _paymentViewModel, "ClientFullName", false, DataSourceUpdateMode.OnPropertyChanged);
+            lbClientAddress.DataBindings.Add("Text", _paymentViewModel, "ClientAddress", false, DataSourceUpdateMode.OnPropertyChanged);
             vendorNumbers = _paymentService.GetVendors().Select(x => new VendorNumber { VendorId = x.VendorId, Number = x.Number }).ToList();
         }
 
@@ -128,8 +128,27 @@ namespace GM_PaymentsPlugin.Forms
             if (IsValid())
             {
                 _payment = _paymentViewModel.ToModel();
-                _payment.ClientFullName = _paymentViewModel.PersonalNumber;
-                this.Close();
+                //_payment.ClientFullName = _paymentViewModel.PersonalNumber;
+                try
+                {
+                    SplashForm.ShowSplashScreen();
+                    if (!IsEditMode)
+                    {
+                        _paymentService.AddPay(_payment);
+                    }
+
+                    this.Close();
+                }
+                catch (DoPayException exception)
+                {
+                    DisplayError(exception.Message);
+                }
+                finally 
+                {
+                    SplashForm.CloseForm();
+                }
+                
+                
             }
         }
 
@@ -344,16 +363,22 @@ namespace GM_PaymentsPlugin.Forms
 
             try
             {
+                SplashForm.ShowSplashScreen();
                 var accountInfo = _paymentService.CheckPay(new CheckPayCommandParams
                 {
                     Account = tbAccount.Text,
                     VendorId = _paymentViewModel.VendorId,
                     VendorServiceId = _paymentViewModel.VendorServiceId
                 });
+                
 
-                lbFioClient.Text = accountInfo.FullName;
-                lbClientAddress.Text = accountInfo.Address;
+                //lbFioClient.Text = accountInfo.FullName;
+                _paymentViewModel.ClientFullName = accountInfo.FullName;
+                _paymentViewModel.ClientAddress = accountInfo.Address;
+                _paymentViewModel.TransactionId = accountInfo.TransactionId;
+                //lbClientAddress.Text = accountInfo.Address;
                 _paymentViewModel.Amount = accountInfo.Amount;
+                
                 foreach (var counter in accountInfo.PaymentCounters)
                 {
                     var find = _paymentViewModel.ListPaymentCounters.FirstOrDefault(x => x.CounterId == counter.CounterId);
@@ -362,13 +387,18 @@ namespace GM_PaymentsPlugin.Forms
                         find.OldValue = counter.OldValue;
                     }
                 }
-               
+
             }
             catch (CheckPayException error)
             {
+               
                 tbAccount.Text = "";
                 tbAccount.Focus();
                 DisplayError(error.Message);
+            }
+            finally
+            {
+                SplashForm.CloseForm();
             }
 
 

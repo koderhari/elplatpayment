@@ -50,6 +50,7 @@ namespace GM_PaymentsPlugin.Forms.Infrastructure
             viewModel.PersonalNumber = model.PersonalNumber;
             viewModel.VendorId = model.VendorId;
             viewModel.VendorServiceId = model.VendorServiceId;
+            viewModel.TransactionId = model.TransactionId;
             foreach(var counter in model.ListPaymentCounters)
                 viewModel.ListPaymentCounters.Add(counter.ToViewModel());
             return viewModel;
@@ -69,6 +70,7 @@ namespace GM_PaymentsPlugin.Forms.Infrastructure
             model.PersonalNumber = viewModel.PersonalNumber;
             model.VendorId = viewModel.VendorId;
             model.VendorServiceId = viewModel.VendorServiceId;
+            model.TransactionId = viewModel.TransactionId;
             foreach (var counter in viewModel.ListPaymentCounters)
                 model.ListPaymentCounters.Add(counter.ToModel());
             return model;

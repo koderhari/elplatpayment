@@ -161,13 +161,13 @@ namespace GM_PaymentsPlugin.Forms
                 form.ShowDialog();
                 if (form.Payment != null)
                 {
-                    _paymentsService.AddPay(form.Payment);
-                    //_payments = _paymentsService.GetPayments();
                     _payments.Add(form.Payment);
                     _cartPayments.Add(ToCartItemViewModel(form.Payment));
+                    if (_settings.SingleMode)
+                        this.Close();
+                    
+                    //_payments = _paymentsService.GetPayments();
                 }
-                if (_settings.SingleMode)
-                    this.Close();
             }
         }
 

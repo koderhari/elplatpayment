@@ -17,7 +17,16 @@ namespace GM_PaymentsPlugin.DataLayer.Entities
         
 
         
-        public String Id { get; set; }
+        public String Id { 
+            get
+            {
+                return TransactionId;
+            } 
+            set
+            {
+                TransactionId = value;
+            } 
+        }
 
         public string TransactionId { get; set; }
         public string Description { get; set; }

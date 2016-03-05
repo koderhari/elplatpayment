@@ -17,6 +17,18 @@ namespace GM_PaymentsPlugin.Forms.Infrastructure
         { }
     }
 
+
+
+    public class DoPayException : Exception
+    {
+        public DoPayException(string message)
+            : base(message)
+        { }
+    }
+
+
+    
+
     
     public class PaymentService
     {
@@ -170,10 +182,28 @@ namespace GM_PaymentsPlugin.Forms.Infrastructure
         
         public void AddPay(Payment payment)
         {
-            Random rand=new Random();
+
+            using (var command = new DoPayCommand(_settingService.GetServerIP(), _settingService.GetPort(), _currentUser, new List<Payment>() { payment }))
+            {
+                command.Execute();
+                if (!command.Success)
+                {
+                    throw new DoPayException(command.ErrorMessage);
+                }
+                else
+                {
+                    if (command.DoPayCommandResults.Count==0)
+                        throw new DoPayException("Сервер не вернул результатов");
+                    if (!command.DoPayCommandResults.First().Success)
+                        throw new DoPayException(String.Format("{0}:{1}", command.DoPayCommandResults.First().ErrorCode, command.DoPayCommandResults.First().ErrorMessage));
+                }
+
+            }
+            
+            //Random rand=new Random();
             
             //passserver
-            payment.Id = "G" + rand.Next(1000, 100000000).ToString();
+            //payment.Id = "G" + rand.Next(1000, 100000000).ToString();
             //GetPayments().Add(payment);
         }
 

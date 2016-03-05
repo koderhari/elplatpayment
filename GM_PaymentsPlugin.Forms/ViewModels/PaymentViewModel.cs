@@ -12,7 +12,9 @@ namespace GM_PaymentsPlugin.Forms.ViewModels
 
 
         string _personalNumber;
-        decimal _amount; 
+        decimal _amount;
+        string _clientFullName;
+        string _clientAddress;
 
         public PaymentViewModel()
         {
@@ -62,9 +64,37 @@ namespace GM_PaymentsPlugin.Forms.ViewModels
             }
         }
 
-        public string ClientFullName { get; set; }
+        public string ClientFullName 
+        {
+            get
+            {
+                return _clientFullName;
+            }
+            set 
+            {
+                if (value != _clientFullName)
+                {
+                    SetValue("ClientFullName", ref _clientFullName, ref value);
+                }
 
-        public string ClientAddress { get; set; }
+            }
+        }
+
+        public string ClientAddress 
+        { 
+            get
+            {
+                return _clientAddress;
+            }
+            set 
+            {
+                if (value != _clientAddress)
+                {
+                    SetValue("ClientAddress", ref _clientAddress, ref value);
+                }
+
+            }
+        }
 
         public string PaymentTypeId { get; set; }
 
@@ -74,6 +104,7 @@ namespace GM_PaymentsPlugin.Forms.ViewModels
 
         public string VendorServiceId { get; set; }
 
+        public string TransactionId { get; set; }
       
         public List<PaymentCounterViewModel> ListPaymentCounters { get; set; }
     }
