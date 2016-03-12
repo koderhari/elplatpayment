@@ -1,4 +1,5 @@
 ﻿using ElPlat_PaymentsPlugin.DataLayer.Entities;
+using ElPlat_PaymentsPlugin.Forms.Helpers;
 using ElPlat_PaymentsPlugin.Forms.Infrastructure;
 using ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands;
 using ElPlat_PaymentsPlugin.Forms.ViewModels;
@@ -17,6 +18,7 @@ namespace ElPlat_PaymentsPlugin.Forms
     {
         private PaymentService _paymentsService;
         BindingList<AccountInfoViewModel> _searchResults = new BindingList<AccountInfoViewModel>();
+        public Payment FindPayment { get; set; }
         public SearchForm(PaymentService paymentsService)
         {
             InitializeComponent();
@@ -27,6 +29,9 @@ namespace ElPlat_PaymentsPlugin.Forms
         private void SearchForm_Load(object sender, EventArgs e)
         {
             dataGridSearchResults.DataSource = _searchResults;
+            dataGridSearchResults.Columns[0].Width=180;
+            dataGridSearchResults.Columns[1].Width = 100;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,14 +42,21 @@ namespace ElPlat_PaymentsPlugin.Forms
         private void DoSearch()
         {
             _searchResults.Clear();
-
+            lbError.Visible = false;
             try
             {
                 SplashForm.ShowSplashScreen();
                 List<AccountInfo> accounts = _paymentsService.SearchAccountServices(tbBarcode.Text);
-
-                foreach (var account in accounts)
-                    _searchResults.Add(ToViewModel(account));
+                if (accounts.Count > 0)
+                {
+                    foreach (var account in accounts)
+                        _searchResults.Add(ToViewModel(account));
+                    btSelect.Select();
+                }
+                else 
+                {
+                    DisplayError("Нет результатов");
+                }
 
             }
             catch (CommandException ex)
@@ -66,9 +78,45 @@ namespace ElPlat_PaymentsPlugin.Forms
             var accountInfoWithCounters=_paymentsService.CheckPay(new CheckPayCommandParams
             {
                 Account=selectAccountInfo.PersonalNumber,
-                VendorId=selectAccountInfo.VendorId,
+                VendorId=selectAccountInfo.VendorService.VendorId,
                 VendorServiceId=selectAccountInfo.VendorServiceId
             });
+            FindPayment = CreatePayment(selectAccountInfo.VendorService,accountInfoWithCounters);
+            this.Close();
+        }
+
+        private Payment CreatePayment(VendorService vendorService, AccountInfo accountInfoWithCounters)
+        {
+            var payment = new Payment();
+            payment.Amount = accountInfoWithCounters.Amount;
+            payment.ClientAddress = accountInfoWithCounters.Address;
+            payment.ClientFullName = accountInfoWithCounters.FullName;
+            payment.TransactionId = accountInfoWithCounters.TransactionId;
+            payment.PersonalNumber = accountInfoWithCounters.PersonalNumber;
+            payment.VendorId = vendorService.VendorId;
+            payment.VendorServiceId = vendorService.Id;
+            payment.VendorServiceNumber = vendorService.Number;
+            foreach(var counter in vendorService.Counters)
+            {
+                payment.ListPaymentCounters.Add(new PaymentCounter 
+                {
+                    IsRequired=counter.IsRequired,
+                    Name=counter.Name,
+                    Order=counter.Order,
+                    CounterId = counter.Id
+                });
+            }
+            foreach (var counter in accountInfoWithCounters.PaymentCounters)
+            {
+                var find = payment.ListPaymentCounters.FirstOrDefault(x => x.CounterId == counter.CounterId);
+                if (find != null)
+                {
+                    find.OldValue = counter.OldValue;
+                }
+            }
+               
+            return payment;
+            
         }
 
         private void btCancel_Click(object sender, EventArgs e)
@@ -87,7 +135,7 @@ namespace ElPlat_PaymentsPlugin.Forms
             model.VendorServiceId = accountInfo.VendorServiceId;
             var findVendorService = _paymentsService.GetVendorServiceById(accountInfo.VendorServiceId);
             model.VendorServiceName = findVendorService.Name;
-            model.VendorId = findVendorService.VendorId;
+            model.VendorService= findVendorService;
             return model;
         }
 
@@ -107,23 +155,18 @@ namespace ElPlat_PaymentsPlugin.Forms
         void DisplayError(string msg)
         {
             lbError.Text = msg;
+            lbError.Visible = true;
         }
 
-        //#region Utils
-        //private PaymentCartItemViewModel GetSelectedPayment()
-        //{
-        //    if (datagridPayments.SelectedRows.Count > 0)
-        //    {
-        //        for (int i = 0; i < datagridPayments.SelectedRows.Count; i++)
-        //        {
-        //            var currentPayment = (PaymentCartItemViewModel)datagridPayments.SelectedRows[i].DataBoundItem;
-        //            return currentPayment;
-        //        }
-        //        return null;
-        //    }
-        //    else return null;
-        //}
-        //#endregion
+        private void tbBarcode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                DoSearch();
+            }
+        }
+
 
 
     }

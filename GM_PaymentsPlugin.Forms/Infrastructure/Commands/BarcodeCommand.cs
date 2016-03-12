@@ -46,6 +46,11 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
         {
             var accountInfoParts = data.Split(delimiterL1);
 
+            if (accountInfoParts.Length == 2 && accountInfoParts[1].Trim('\0').Length == 0)
+            {
+                return;
+            }
+
             for (var i = 1; i < accountInfoParts.Length; i++)
             {
                 AccountInfos.Add(ProccessAccountInfoData(accountInfoParts[i]));

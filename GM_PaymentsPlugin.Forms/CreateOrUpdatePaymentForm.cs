@@ -81,13 +81,16 @@ namespace ElPlat_PaymentsPlugin.Forms
             cmbVendorNumber.DataSource = vendorNumbers;
             cmbVendorNumber.DisplayMember = "Number";
             cmbVendorNumber.ValueMember = "VendorId";
-            
+
             
 
             if (IsEditMode)
             {
-                cmbVendorNumber.SelectedIndex = cmbVendorNumber.Items.IndexOf(vendorNumbers.First(x => x.VendorId == _payment.VendorId));
-                cmbVendorService.SelectedIndex = cmbVendorService.Items.IndexOf(_currentServices.First(x => x.Value == _payment.VendorServiceId));
+                manualVendorChanges = false;
+                cmbVendorNumber.SelectedItem = vendorNumbers.First(x => x.VendorId == _payment.VendorId);//cmbVendorNumber.Items.IndexOf(vendorNumbers.First(x => x.VendorId == _payment.VendorId));
+
+                //cmbVendorService.SelectedIndex = cmbVendorService.Items.IndexOf(_currentServices.First(x => x.Value == _payment.VendorServiceId));
+                cmbVendorService.SelectedItem= _currentServices.First(x => x.Value == _payment.VendorServiceId);
                 foreach(var counter in _paymentViewModel.ListPaymentCounters)
                 {
                     var find=_payment.ListPaymentCounters.First(x => x.CounterId == counter.CounterId);
@@ -97,8 +100,9 @@ namespace ElPlat_PaymentsPlugin.Forms
                 _paymentViewModel.Amount = _payment.Amount;
                 _paymentViewModel.AmountComission = _payment.AmountComission;
                 _paymentViewModel.PersonalNumber = _payment.PersonalNumber;
-                cmbVendorNumber.Enabled = false;
-                cmbVendors.Enabled = false;
+                tbAmount.Select();
+                //cmbVendorNumber.Enabled = false;
+                //cmbVendors.Enabled = false;
             }
             manualVendorChanges = false;
         }
@@ -132,10 +136,10 @@ namespace ElPlat_PaymentsPlugin.Forms
                 try
                 {
                     SplashForm.ShowSplashScreen();
-                    if (!IsEditMode)
-                    {
+                    //if (!IsEditMode)
+                    //{
                         _paymentService.AddPay(payment);
-                    }
+                    //}
                     _payment = payment;
                     this.Close();
                 }

@@ -136,6 +136,10 @@ namespace ElPlat_PaymentsPlugin.Forms
             using (var searchForm = new SearchForm(_paymentsService))
             {
                 searchForm.ShowDialog();
+                if (searchForm.FindPayment != null)
+                {
+                    OpenEditForm(searchForm.FindPayment);
+                }
             }
         }
 
@@ -147,16 +151,22 @@ namespace ElPlat_PaymentsPlugin.Forms
             var payItemForEdit = GetSelectedPayment();
             if (payItemForEdit == null) return;
             var payForEdit=_payments.First(x => x.Id == payItemForEdit.Id);
+            OpenEditForm(payForEdit);
+           
+        }
 
+        private void OpenEditForm(Payment payForEdit)
+        {
+            //нет редактирования, если добавлять то надо разделять логику для платежей после поиска
             using (var form = new CreateOrUpdatePaymentForm(payForEdit, _paymentsService))
             {
                 form.ShowDialog();
 
-                _paymentsService.EditPay(form.Payment);
+                //_paymentsService.EditPay(form.Payment);
                 //_payments = _paymentsService.GetPayments();
-                _payments.Remove(payForEdit);
+                //_payments.Remove(payForEdit);
                 _payments.Add(form.Payment);
-                _cartPayments.Remove(_cartPayments.First(x => x.Id == form.Payment.Id));
+                //_cartPayments.Remove(_cartPayments.First(x => x.Id == form.Payment.Id));
                 _cartPayments.Add(ToCartItemViewModel(form.Payment));
             }
         }
