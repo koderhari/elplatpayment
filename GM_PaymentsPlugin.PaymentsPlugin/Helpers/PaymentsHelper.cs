@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
-using GM_PaymentsPlugin.DataLayer;
-using GM_PaymentsPlugin.DataLayer.Entities;
-using GM_PaymentsPlugin.Forms;
+using ElPlat_PaymentsPlugin.DataLayer;
+using ElPlat_PaymentsPlugin.DataLayer.Entities;
+using ElPlat_PaymentsPlugin.Forms;
 using GM_PluginCommon.Payments;
-using GM_PaymentsPlugin.Forms.Infrastructure;
+using ElPlat_PaymentsPlugin.Forms.Infrastructure;
 
-namespace GM_PaymentsPlugin.PaymentsPlugin.Helpers
+namespace ElPlat_PaymentsPlugin.PaymentsPlugin.Helpers
 {
     public static class PaymentsHelper
     {

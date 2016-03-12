@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GM_PaymentsPlugin.DataLayer.Entities
+namespace ElPlat_PaymentsPlugin.DataLayer.Entities
 {
     public class User
     {

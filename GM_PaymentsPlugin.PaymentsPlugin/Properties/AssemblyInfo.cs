@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-using GM_PaymentsPlugin.PaymentsPlugin;
+using ElPlat_PaymentsPlugin.PaymentsPlugin;
 using GM_PluginCommon;
 
 [assembly: AssemblyTitle("GM_PaymentsPlugin.PaymentsPlugin")]

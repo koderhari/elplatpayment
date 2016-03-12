@@ -2,7 +2,7 @@
 using GM_PluginCommon.Hardware;
 using GM_PluginCommon.Payments;
 
-namespace GM_PaymentsPlugin.PaymentsPlugin
+namespace ElPlat_PaymentsPlugin.PaymentsPlugin
 {
     /// <summary>
     /// Интерфейс плагина

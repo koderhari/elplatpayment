@@ -1,5 +1,5 @@
-﻿using GM_PaymentsPlugin.DataLayer.Entities;
-using GM_PaymentsPlugin.Forms.Infrastructure;
+﻿using ElPlat_PaymentsPlugin.DataLayer.Entities;
+using ElPlat_PaymentsPlugin.Forms.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace GM_PaymentsPlugin.Forms
+namespace ElPlat_PaymentsPlugin.Forms
 {
     public partial class AutorizationForm : Form
     {

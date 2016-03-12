@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Windows.Forms;
-using GM_PaymentsPlugin.PaymentsPlugin;
+using ElPlat_PaymentsPlugin.PaymentsPlugin;
 using GM_PluginCommon.Payments;
 
 namespace _TestHostApp

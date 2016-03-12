@@ -1,10 +1,10 @@
-﻿using GM_PaymentsPlugin.Forms.ViewModels;
+﻿using ElPlat_PaymentsPlugin.Forms.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GM_PaymentsPlugin.Forms.ViewModels
+namespace ElPlat_PaymentsPlugin.Forms.ViewModels
 {
 
     public class PaymentViewModel:ViewModelBase

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GM_PaymentsPlugin.DataLayer.Entities
+namespace ElPlat_PaymentsPlugin.DataLayer.Entities
 {
     public class AccountInfo
     {
@@ -18,6 +18,7 @@ namespace GM_PaymentsPlugin.DataLayer.Entities
         public decimal Amount { get; set; }
         public string FullName { get; set; }
         public string Address { get; set; }
+        public string VendorServiceId { get; set; }
         public List<PaymentCounter> PaymentCounters { get; set; }
     }
 }

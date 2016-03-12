@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using GM_PluginCommon.Payments;
 
-namespace GM_PaymentsPlugin.PaymentsPlugin.Helpers
+namespace ElPlat_PaymentsPlugin.PaymentsPlugin.Helpers
 {
     public static class VendorsHelper
     {

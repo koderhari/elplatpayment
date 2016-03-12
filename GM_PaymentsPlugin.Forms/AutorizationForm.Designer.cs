@@ -1,4 +1,4 @@
-﻿namespace GM_PaymentsPlugin.Forms
+﻿namespace ElPlat_PaymentsPlugin.Forms
 {
     partial class AutorizationForm
     {

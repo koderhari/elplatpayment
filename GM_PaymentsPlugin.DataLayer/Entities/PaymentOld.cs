@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GM_PaymentsPlugin.DataLayer.Entities
+namespace ElPlat_PaymentsPlugin.DataLayer.Entities
 {
     /// <summary>
     /// Сущность "Платеж"

@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GM_PaymentsPlugin.PaymentsPlugin", "GM_PaymentsPlugin.PaymentsPlugin\GM_PaymentsPlugin.PaymentsPlugin.csproj", "{1D033B88-A85F-4E5A-A03E-9B720A3125B1}"
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElPlat_PaymentsPlugin.PaymentsPlugin", "GM_PaymentsPlugin.PaymentsPlugin\ElPlat_PaymentsPlugin.PaymentsPlugin.csproj", "{1D033B88-A85F-4E5A-A03E-9B720A3125B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GM_PaymentsPlugin.DataLayer", "GM_PaymentsPlugin.DataLayer\GM_PaymentsPlugin.DataLayer.csproj", "{4CAF8F20-BE26-4F32-8F4A-DD1D126A60A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElPlat_PaymentsPlugin.DataLayer", "GM_PaymentsPlugin.DataLayer\ElPlat_PaymentsPlugin.DataLayer.csproj", "{4CAF8F20-BE26-4F32-8F4A-DD1D126A60A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_TestHostApp", "_TestHostApp\_TestHostApp.csproj", "{D1A58A90-C1E5-4DA2-8D1E-6F4C89004972}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GM_PaymentsPlugin.Forms", "GM_PaymentsPlugin.Forms\GM_PaymentsPlugin.Forms.csproj", "{1DB04D61-8B47-45B0-9620-D0CBE3BB4130}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElPlat_PaymentsPlugin.Forms", "GM_PaymentsPlugin.Forms\ElPlat_PaymentsPlugin.Forms.csproj", "{1DB04D61-8B47-45B0-9620-D0CBE3BB4130}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

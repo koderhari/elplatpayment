@@ -1,4 +1,4 @@
-﻿namespace GM_PaymentsPlugin.Forms
+﻿namespace ElPlat_PaymentsPlugin.Forms
 {
     partial class PaymentsCartForm
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.headerPanel = new System.Windows.Forms.Panel();
+            this.lbError = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.commandPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -42,7 +43,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.cartPanel = new System.Windows.Forms.Panel();
             this.datagridPayments = new System.Windows.Forms.DataGridView();
-            this.lbError = new System.Windows.Forms.Label();
             this.headerPanel.SuspendLayout();
             this.commandPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -62,6 +62,18 @@
             this.headerPanel.Name = "headerPanel";
             this.headerPanel.Size = new System.Drawing.Size(995, 81);
             this.headerPanel.TabIndex = 0;
+            // 
+            // lbError
+            // 
+            this.lbError.AutoSize = true;
+            this.lbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
+            this.lbError.ForeColor = System.Drawing.Color.Red;
+            this.lbError.Location = new System.Drawing.Point(3, 31);
+            this.lbError.Name = "lbError";
+            this.lbError.Size = new System.Drawing.Size(64, 25);
+            this.lbError.TabIndex = 1;
+            this.lbError.Text = "label2";
+            this.lbError.Visible = false;
             // 
             // label1
             // 
@@ -182,6 +194,7 @@
             this.btnEdit.TabStop = false;
             this.btnEdit.Text = "Enter - редактировать";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Visible = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // panel1
@@ -215,18 +228,6 @@
             this.datagridPayments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagridPayments.Size = new System.Drawing.Size(571, 495);
             this.datagridPayments.TabIndex = 2;
-            // 
-            // lbError
-            // 
-            this.lbError.AutoSize = true;
-            this.lbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.lbError.ForeColor = System.Drawing.Color.Red;
-            this.lbError.Location = new System.Drawing.Point(3, 31);
-            this.lbError.Name = "lbError";
-            this.lbError.Size = new System.Drawing.Size(64, 25);
-            this.lbError.TabIndex = 1;
-            this.lbError.Text = "label2";
-            this.lbError.Visible = false;
             // 
             // PaymentsCartForm
             // 

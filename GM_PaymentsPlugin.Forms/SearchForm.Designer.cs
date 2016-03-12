@@ -1,4 +1,4 @@
-﻿namespace GM_PaymentsPlugin.Forms
+﻿namespace ElPlat_PaymentsPlugin.Forms
 {
     partial class SearchForm
     {
@@ -39,6 +39,7 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lbError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSearchResults)).BeginInit();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -88,6 +89,7 @@
             this.dataGridSearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridSearchResults.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridSearchResults.Location = new System.Drawing.Point(0, 0);
+            this.dataGridSearchResults.MultiSelect = false;
             this.dataGridSearchResults.Name = "dataGridSearchResults";
             this.dataGridSearchResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridSearchResults.Size = new System.Drawing.Size(751, 192);
@@ -149,6 +151,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lbError);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 168);
@@ -164,6 +167,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(751, 192);
             this.panel3.TabIndex = 10;
+            // 
+            // lbError
+            // 
+            this.lbError.AutoSize = true;
+            this.lbError.ForeColor = System.Drawing.Color.Red;
+            this.lbError.Location = new System.Drawing.Point(276, 9);
+            this.lbError.Name = "lbError";
+            this.lbError.Size = new System.Drawing.Size(79, 29);
+            this.lbError.TabIndex = 5;
+            this.lbError.Text = "label3";
             // 
             // SearchForm
             // 
@@ -206,5 +219,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lbError;
     }
 }

@@ -1,11 +1,11 @@
-﻿using GM_PaymentsPlugin.DataLayer.Entities;
+﻿using ElPlat_PaymentsPlugin.DataLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace GM_PaymentsPlugin.Forms.Infrastructure.Commands
+namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
 {
 
 

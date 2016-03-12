@@ -1,6 +1,6 @@
-﻿using GM_PaymentsPlugin.DataLayer.Entities;
-using GM_PaymentsPlugin.Forms.Infrastructure;
-using GM_PaymentsPlugin.Forms.ViewModels;
+﻿using ElPlat_PaymentsPlugin.DataLayer.Entities;
+using ElPlat_PaymentsPlugin.Forms.Infrastructure;
+using ElPlat_PaymentsPlugin.Forms.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,9 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace GM_PaymentsPlugin.Forms
+namespace ElPlat_PaymentsPlugin.Forms
 {
-
+    
     
     public partial class PaymentsCartForm : Form
     {
@@ -39,6 +39,7 @@ namespace GM_PaymentsPlugin.Forms
         public PaymentsCartForm(PaymentsCartFormSettings settings, PaymentService paymentsService)
         {
             InitializeComponent();
+            
             _paymentsService = paymentsService;
             _recievedPayments = new List<PaymentOld>();
             _payments = new List<Payment>();

@@ -1,5 +1,5 @@
-﻿using GM_PaymentsPlugin.DataLayer.Entities;
-using GM_PaymentsPlugin.Forms.Infrastructure.Commands;
+﻿using ElPlat_PaymentsPlugin.DataLayer.Entities;
+using ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace GM_PaymentsPlugin.Forms.Infrastructure
+namespace ElPlat_PaymentsPlugin.Forms.Infrastructure
 {
     
     public class CheckPayException:Exception
@@ -43,7 +43,15 @@ namespace GM_PaymentsPlugin.Forms.Infrastructure
     }
 
 
-    
+
+        public class CommandException : Exception
+        {
+            public CommandException(string message)
+                : base(message)
+            { }
+        }
+
+
 
     
     public class PaymentService
@@ -304,23 +312,25 @@ namespace GM_PaymentsPlugin.Forms.Infrastructure
 
         public List<AccountInfo> SearchAccountServices(string barcode)
         {
-            var result = new List<AccountInfo>();
-            result.Add(new AccountInfo()
-            {
-                Address = "Address 1",
-                Amount = 100.2M,
-                FullName="Ivan Ivanov",
-                PersonalNumber="12345"
-            });
-            result.Add(new AccountInfo()
-            {
-                Address = "Address 2",
-                Amount = 122.2M,
-                FullName = "ZIvan ZIvanov",
-                PersonalNumber = "555"
-            });
 
-            return result;
+
+            using (var command = new BarcodeCommand(_settingService.GetServerIP(),
+                                               _settingService.GetPort(),
+                                               _currentUser,
+                                               barcode))
+            {
+                command.Execute();
+                if (!command.Success)
+                {
+                    throw new CommandException(command.ErrorMessage);
+                }
+                else
+                {
+                    return command.AccountInfos;
+                }
+
+            }
+
         }
     } 
 }

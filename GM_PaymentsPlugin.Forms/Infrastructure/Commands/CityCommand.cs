@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace GM_PaymentsPlugin.Forms.Infrastructure.Commands
+namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
 {
     abstract class CityCommand:IDisposable
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace GM_PaymentsPlugin.Forms
+namespace ElPlat_PaymentsPlugin.Forms
 {
     public partial class SplashForm : Form
     {

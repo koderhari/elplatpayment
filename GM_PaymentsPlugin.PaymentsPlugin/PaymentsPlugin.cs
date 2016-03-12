@@ -1,13 +1,14 @@
 ﻿using System.Text;
-using GM_PaymentsPlugin.DataLayer;
-using GM_PaymentsPlugin.PaymentsPlugin.Helpers;
+using ElPlat_PaymentsPlugin.DataLayer;
+using ElPlat_PaymentsPlugin.PaymentsPlugin.Helpers;
 using GM_PluginCommon.Payments;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using GM_PaymentsPlugin.Forms.Infrastructure;
+using ElPlat_PaymentsPlugin.Forms.Infrastructure;
+using System.Windows.Forms;
 
-namespace GM_PaymentsPlugin.PaymentsPlugin
+namespace ElPlat_PaymentsPlugin.PaymentsPlugin
 {
     /// <summary>
     /// Реализация интерфейса плагина
@@ -40,6 +41,7 @@ namespace GM_PaymentsPlugin.PaymentsPlugin
             {
                 //Trace.TraceInformation(ex.Message);
                 LogManager.CurrentLogger.Error("GetVendorsList error", ex);
+                MessageBox.Show(String.Format("Произошла непредвиденная ошибка, свяжитесь с службой поддержки \"Электронный платеж\""));
                 return new List<VendorInfo>();
             }
         }
@@ -65,6 +67,7 @@ namespace GM_PaymentsPlugin.PaymentsPlugin
             catch (Exception ex)
             {
                 LogManager.CurrentLogger.Error("FindVendor", ex);
+                MessageBox.Show(String.Format("Произошла непредвиденная ошибка, свяжитесь с службой поддержки \"Электронный платеж\""));
                 return new List<SearchResult>();
             }
         }
@@ -91,7 +94,8 @@ namespace GM_PaymentsPlugin.PaymentsPlugin
             }
             catch (Exception ex)
             {
-                LogManager.CurrentLogger.Error("GetVendorsList error", ex);
+                LogManager.CurrentLogger.Error("RecievePayments error", ex);
+                MessageBox.Show(String.Format("Произошла непредвиденная ошибка, свяжитесь с службой поддержки \"Электронный платеж\""));
                 return new List<PaymentInfo>();
             }
         }
@@ -112,6 +116,7 @@ namespace GM_PaymentsPlugin.PaymentsPlugin
             catch (Exception ex)
             {
                 LogManager.CurrentLogger.Error("PaymentConfirm", ex);
+                MessageBox.Show(String.Format("Произошла непредвиденная ошибка, свяжитесь с службой поддержки \"Электронный платеж\""));
                 throw ex;
             }
         }
@@ -132,6 +137,7 @@ namespace GM_PaymentsPlugin.PaymentsPlugin
             catch (Exception ex)
             {
                 LogManager.CurrentLogger.Error("PaymentCancel", ex);
+                MessageBox.Show(String.Format("Произошла непредвиденная ошибка, свяжитесь с службой поддержки \"Электронный платеж\""));
                 throw ex;
             }
         }

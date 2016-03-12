@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
-namespace GM_PaymentsPlugin.Forms.ViewModels
+namespace ElPlat_PaymentsPlugin.Forms.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {

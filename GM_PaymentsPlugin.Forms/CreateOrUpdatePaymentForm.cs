@@ -1,5 +1,5 @@
-﻿using GM_PaymentsPlugin.DataLayer.Entities;
-using GM_PaymentsPlugin.Forms.ViewModels;
+﻿using ElPlat_PaymentsPlugin.DataLayer.Entities;
+using ElPlat_PaymentsPlugin.Forms.ViewModels;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -9,12 +9,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using GM_PaymentsPlugin.Forms.Infrastructure;
-using GM_PaymentsPlugin.Forms.Helpers;
+using ElPlat_PaymentsPlugin.Forms.Infrastructure;
+using ElPlat_PaymentsPlugin.Forms.Helpers;
 using System.Globalization;
-using GM_PaymentsPlugin.Forms.Infrastructure.Commands;
+using ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands;
 
-namespace GM_PaymentsPlugin.Forms
+namespace ElPlat_PaymentsPlugin.Forms
 {
     public partial class CreateOrUpdatePaymentForm : Form
     { 

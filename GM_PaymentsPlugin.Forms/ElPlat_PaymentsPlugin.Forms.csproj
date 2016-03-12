@@ -7,7 +7,7 @@
     <ProjectGuid>{1DB04D61-8B47-45B0-9620-D0CBE3BB4130}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GM_PaymentsPlugin.Forms</RootNamespace>
+    <RootNamespace>ElPlat_PaymentsPlugin.Forms</RootNamespace>
     <AssemblyName>GM_PaymentsPlugin.Forms</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="Infrastructure\Commands\CancelPayCommand.cs" />
     <Compile Include="Infrastructure\Commands\ConfirmPayCommand .cs" />
+    <Compile Include="Infrastructure\Commands\BarcodeCommand.cs" />
     <Compile Include="Infrastructure\Commands\DoPayCommand .cs" />
     <Compile Include="SearchForm.cs">
       <SubType>Form</SubType>
@@ -96,6 +97,7 @@
     <Compile Include="SplashForm.Designer.cs">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AccountInfoViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase .cs" />
     <Compile Include="ViewModels\PaymentViewModel.cs" />
     <Compile Include="ViewModels\PaymentCartItemViewModel.cs" />
@@ -103,9 +105,9 @@
     <Compile Include="ViewModels\SelectListItem.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GM_PaymentsPlugin.DataLayer\GM_PaymentsPlugin.DataLayer.csproj">
+    <ProjectReference Include="..\GM_PaymentsPlugin.DataLayer\ElPlat_PaymentsPlugin.DataLayer.csproj">
       <Project>{4CAF8F20-BE26-4F32-8F4A-DD1D126A60A5}</Project>
-      <Name>GM_PaymentsPlugin.DataLayer</Name>
+      <Name>ElPlat_PaymentsPlugin.DataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
