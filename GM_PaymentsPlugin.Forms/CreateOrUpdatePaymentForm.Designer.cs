@@ -58,8 +58,8 @@
             this.tbAmount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label7 = new System.Windows.Forms.Label();
             this.btnAddInfo = new System.Windows.Forms.Button();
+            this.gbAddInfos = new System.Windows.Forms.GroupBox();
             this.headerPanel.SuspendLayout();
             this.commandPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -421,7 +421,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.gbAddInfos);
             this.tabPage2.Location = new System.Drawing.Point(4, 5);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
@@ -430,15 +430,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(207, 135);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 20);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "label7";
             // 
             // btnAddInfo
             // 
@@ -451,6 +442,18 @@
             this.btnAddInfo.UseVisualStyleBackColor = true;
             this.btnAddInfo.Visible = false;
             this.btnAddInfo.Click += new System.EventHandler(this.btnAddInfo_Click);
+            // 
+            // gbAddInfos
+            // 
+            this.gbAddInfos.AutoSize = true;
+            this.gbAddInfos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbAddInfos.Location = new System.Drawing.Point(3, 4);
+            this.gbAddInfos.Name = "gbAddInfos";
+            this.gbAddInfos.Padding = new System.Windows.Forms.Padding(20);
+            this.gbAddInfos.Size = new System.Drawing.Size(628, 566);
+            this.gbAddInfos.TabIndex = 0;
+            this.gbAddInfos.TabStop = false;
+            this.gbAddInfos.Text = "Доп.сведения";
             // 
             // CreateOrUpdatePaymentForm
             // 
@@ -507,7 +510,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnMainInfo;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox gbCounters;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lbFioClient;
@@ -525,5 +527,6 @@
         private System.Windows.Forms.Label lbError;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAddInfo;
+        private System.Windows.Forms.GroupBox gbAddInfos;
     }
 }

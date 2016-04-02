@@ -22,6 +22,26 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure
             return viewModel;
         }
 
+        public static PaymentAddInfoViewModel ToViewModel(this AddInfo model)
+        {
+            var viewModel = new PaymentAddInfoViewModel();
+            viewModel.Id= model.Id;
+            viewModel.Required = model.Required;
+            viewModel.Name = model.Name;
+            viewModel.Value= model.Value;
+            return viewModel;
+        }
+
+        public static AddInfo ToModel(this PaymentAddInfoViewModel viewModel)
+        {
+            var model = new AddInfo();
+            model.Id = viewModel.Id;
+            model.Required = viewModel.Required;
+            model.Name = viewModel.Name;
+            model.Value = viewModel.Value;
+            return model;
+        }
+
         public static PaymentCounter ToModel(this PaymentCounterViewModel viewModel)
         {
             var model = new PaymentCounter();
@@ -53,6 +73,9 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure
             viewModel.TransactionId = model.TransactionId;
             foreach(var counter in model.ListPaymentCounters)
                 viewModel.ListPaymentCounters.Add(counter.ToViewModel());
+            foreach (var addInfo in model.ListAddInfos)
+                viewModel.ListPaymentAddInfos.Add(addInfo.ToViewModel());
+
             return viewModel;
         }
 
@@ -73,6 +96,8 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure
             model.TransactionId = viewModel.TransactionId;
             foreach (var counter in viewModel.ListPaymentCounters)
                 model.ListPaymentCounters.Add(counter.ToModel());
+            foreach (var addInfo in viewModel.ListPaymentAddInfos)
+                model.ListAddInfos.Add(addInfo.ToModel());
             return model;
         }
 

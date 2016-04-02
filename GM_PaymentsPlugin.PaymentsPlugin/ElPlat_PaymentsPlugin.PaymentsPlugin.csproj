@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ElPlat_PaymentsPlugin.PaymentsPlugin</RootNamespace>
-    <AssemblyName>GM_PaymentsPlugin.PaymentsPlugin</AssemblyName>
+    <AssemblyName>ElPlat_PaymentsPlugin.PaymentsPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

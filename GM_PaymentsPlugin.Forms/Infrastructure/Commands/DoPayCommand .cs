@@ -69,8 +69,23 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
             foreach(var counter in payment.ListPaymentCounters)
                 paymentData.Append(delimiterL2).Append(PreparePaymentCounterData(counter));
 
+            foreach (var addInfo in payment.ListAddInfos)
+                paymentData.Append(delimiterL2).Append(PrepareAddInfoData(addInfo));
+
+
             //can optimize via return char[]
             return paymentData.ToString();
+        }
+
+        private string PrepareAddInfoData(AddInfo addInfo)
+        {
+            StringBuilder addInfoData = new StringBuilder();
+            addInfoData.Append(counterHeader)
+                        .Append(delimiterL3).Append(addInfo.Id)
+                        .Append(delimiterL3).Append(addInfo.Value);
+
+            //can optimize via return char[]
+            return addInfoData.ToString();
         }
 
         private string PreparePaymentCounterData(PaymentCounter counter)

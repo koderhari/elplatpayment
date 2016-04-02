@@ -13,6 +13,7 @@ namespace ElPlat_PaymentsPlugin.DataLayer.Entities
         public Payment()
         {
             ListPaymentCounters = new List<PaymentCounter>();
+            ListAddInfos = new List<AddInfo>();
         }
         
 
@@ -52,5 +53,8 @@ namespace ElPlat_PaymentsPlugin.DataLayer.Entities
         public string VendorServiceNumber { get; set; }
 
         public List<PaymentCounter> ListPaymentCounters {get;set;}
+
+
+        public List<AddInfo> ListAddInfos { get; set; }
     }
 }

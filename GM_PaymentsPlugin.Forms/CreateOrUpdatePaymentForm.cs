@@ -264,6 +264,7 @@ namespace ElPlat_PaymentsPlugin.Forms
                 if (selectService.HasAddInfos)
                 {
                     LoadAddInfos(selectService);
+                    btnAddInfo.Visible = true;
                 }
                 else
                 {
@@ -282,10 +283,47 @@ namespace ElPlat_PaymentsPlugin.Forms
         private void LoadAddInfos(VendorService selectService)
         {
             _paymentViewModel.ListPaymentAddInfos.Clear();
-            if selectService.HasAddInfos
-            var viewCounters = selectService.Counters.OrderBy(c => c.Order).ToList();
-            var paymentCounters = CreatePaymentCounters(viewCounters);
-            _paymentViewModel.ListPaymentCounters.AddRange(paymentCounters);
+            
+            var addInfos = CreatePaymentAddInfos(selectService.AddInfos);
+            _paymentViewModel.ListPaymentAddInfos.AddRange(addInfos);
+
+            gbAddInfos.Controls.Clear();
+            int x = 20;
+            int y = 20;
+            int padding = 50;
+            foreach (var addInfo in addInfos)
+            {
+                Label labelAddInfo = new Label();
+                labelAddInfo.Text = addInfo.Name;
+                labelAddInfo.Size = new Size(100, 25);
+                labelAddInfo.Location = new Point(x, y);
+                gbAddInfos.Controls.Add(labelAddInfo);
+
+                TextBox tbValue = new TextBox();
+                tbValue.Size = new Size(400, 25);
+                tbValue.Location = new Point(x + 100 + padding, y);
+
+                tbValue.DataBindings.Add("Text", addInfo, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
+                tbValue.KeyDown += tbnewvalue_KeyDown;
+                gbAddInfos.Controls.Add(tbValue);
+
+                y += 30;
+            }
+        }
+
+        private List<PaymentAddInfoViewModel> CreatePaymentAddInfos(List<AddInfo> addInfos)
+        {
+            var result = new List<PaymentAddInfoViewModel>();
+            foreach (var addInfo in addInfos)
+            {
+                result.Add(new PaymentAddInfoViewModel
+                {
+                    Required = addInfo.Required,
+                    Name = addInfo.Name,
+                    Id = addInfo.Id,
+                });
+            }
+            return result;
         }
 
         private void LoadCounters(VendorService selectService)
@@ -524,6 +562,21 @@ namespace ElPlat_PaymentsPlugin.Forms
                     return false;
                 }
             }
+
+            foreach (var addInfo in _paymentViewModel.ListPaymentAddInfos)
+            {
+                if (addInfo.Required && string.IsNullOrEmpty(addInfo.Value))
+                {
+                    string msg = "Не задано доп. сведение " + addInfo.Name;
+                    DisplayError(msg);
+
+                    MessageBox.Show(msg, "Валидация платежа",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+ 
+            }
+
 
             return true;
         }
