@@ -10,6 +10,7 @@ namespace ElPlat_PaymentsPlugin.DataLayer.Entities
         public VendorService()
         {
             Counters = new List<Counter>();
+            AddInfos = new List<AddInfo>();
         }
 
         public string Id { get; set; }
@@ -32,6 +33,19 @@ namespace ElPlat_PaymentsPlugin.DataLayer.Entities
             } 
         }
 
+        public bool HasAddInfos
+        {
+            get
+            {
+                if (AddInfos.Count > 0)
+                    return true;
+                else return false;
+
+            }
+        }
+
         public List<Counter> Counters { get; set; }
+
+        public List<AddInfo> AddInfos { get; set; }
     }
 }

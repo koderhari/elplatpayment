@@ -166,11 +166,12 @@ namespace ElPlat_PaymentsPlugin.Forms
             //DisplayError(dec.ToString());
         }
         //for дополнительных сведений
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //    tabControl1.SelectedTab = tabPage2;
-        //}
-
+        private void btnAddInfo_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPage2;
+        }
+        
+      
         #region VendorsSelect
         private void cmbVendors_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -247,14 +248,29 @@ namespace ElPlat_PaymentsPlugin.Forms
             var selectService = _paymentService.GetVendorServiceById(selectItem.Value);
             _paymentViewModel.VendorServiceId = selectItem.Value;
             
-            if (selectService != null && selectService.HasCounters)
+            if (selectService != null)
             {
-                LoadCounters(selectService);
+                if (selectService.HasCounters)
+                {
+                    LoadCounters(selectService);
+                }
+                else
+                {
+                    _paymentViewModel.ListPaymentCounters.Clear();
+                    gbCounters.Visible = false;
 
-            }else
-            {
-                _paymentViewModel.ListPaymentCounters.Clear();
-                gbCounters.Visible = false;
+                }
+
+                if (selectService.HasAddInfos)
+                {
+                    LoadAddInfos(selectService);
+                }
+                else
+                {
+                    _paymentViewModel.ListPaymentCounters.Clear();
+                    btnAddInfo.Visible = false;
+                }
+
             }
             lbAccountLabel.Text = selectService.AccountLabel;
             tbAccount.MaxLength = FormatHelper.GetLengthFromFormat(selectService.FormatInput);
@@ -262,6 +278,15 @@ namespace ElPlat_PaymentsPlugin.Forms
                 
         }
 
+
+        private void LoadAddInfos(VendorService selectService)
+        {
+            _paymentViewModel.ListPaymentAddInfos.Clear();
+            if selectService.HasAddInfos
+            var viewCounters = selectService.Counters.OrderBy(c => c.Order).ToList();
+            var paymentCounters = CreatePaymentCounters(viewCounters);
+            _paymentViewModel.ListPaymentCounters.AddRange(paymentCounters);
+        }
 
         private void LoadCounters(VendorService selectService)
         {
@@ -551,6 +576,8 @@ namespace ElPlat_PaymentsPlugin.Forms
             public string VendorId { get; set; }
         }
         #endregion
+
+
 
 
 

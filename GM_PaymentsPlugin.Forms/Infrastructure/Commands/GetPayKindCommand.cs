@@ -77,17 +77,38 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
             currentVendorService.AccountLabel = parts[6];
             currentVendorService.FormatInput = parts[7];
             VendorServices.Add(currentVendorService);
+
             for (var i = 8; i < parts.Length; i++)
             {
-                if (parts[i].StartsWith("#СЧ")) 
+                if (parts[i].StartsWith(counterHeader)) 
                 {
                     var counterParts = parts[i].Split(delimiterL3);
                     currentVendorService.Counters.Add(PrepareCounter(counterParts, currentVendorService.Id));
                 }
-                
+            }
+
+            for (var i = 8; i < parts.Length; i++)
+            {
+                if (parts[i].StartsWith(addInfoHeader))
+                {
+                    var addInfoParts = parts[i].Split(delimiterL3);
+                    currentVendorService.AddInfos.Add(PrepareAddInfo(addInfoParts, currentVendorService.Id));
+                }
             }
 
             return currentVendorService;
+        }
+
+        private AddInfo PrepareAddInfo(string[] addInfoParts, string vendorServiceId)
+        {
+            var addInfo = new AddInfo();
+
+            addInfo.Name = addInfoParts[3];
+            addInfo.Id = addInfoParts[1];
+            addInfo.Required = addInfoParts[2] == "no" ? false : true;
+            addInfo.VendorServiceId = vendorServiceId;
+
+            return addInfo;
         }
 
 

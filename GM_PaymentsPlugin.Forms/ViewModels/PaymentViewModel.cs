@@ -19,6 +19,7 @@ namespace ElPlat_PaymentsPlugin.Forms.ViewModels
         public PaymentViewModel()
         {
             ListPaymentCounters = new List<PaymentCounterViewModel>();
+            ListPaymentAddInfos = new List<PaymentAddInfoViewModel>();
         }
 
         public String Id { get; set; }
@@ -107,5 +108,7 @@ namespace ElPlat_PaymentsPlugin.Forms.ViewModels
         public string TransactionId { get; set; }
       
         public List<PaymentCounterViewModel> ListPaymentCounters { get; set; }
+
+        public List<PaymentAddInfoViewModel> ListPaymentAddInfos { get; set; }
     }
 }

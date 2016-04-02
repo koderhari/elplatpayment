@@ -36,7 +36,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.flowLayoutPanelCartCommand = new System.Windows.Forms.FlowLayoutPanel();
             this.lbError = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMainInfo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -59,6 +59,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnAddInfo = new System.Windows.Forms.Button();
             this.headerPanel.SuspendLayout();
             this.commandPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -145,7 +146,8 @@
             // flowLayoutPanelCartCommand
             // 
             this.flowLayoutPanelCartCommand.Controls.Add(this.lbError);
-            this.flowLayoutPanelCartCommand.Controls.Add(this.button1);
+            this.flowLayoutPanelCartCommand.Controls.Add(this.btnMainInfo);
+            this.flowLayoutPanelCartCommand.Controls.Add(this.btnAddInfo);
             this.flowLayoutPanelCartCommand.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelCartCommand.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelCartCommand.Location = new System.Drawing.Point(0, 0);
@@ -167,18 +169,18 @@
             this.lbError.Text = "label8";
             this.lbError.Visible = false;
             // 
-            // button1
+            // btnMainInfo
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(3, 160);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 35, 3, 35);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(213, 56);
-            this.button1.TabIndex = 3;
-            this.button1.TabStop = false;
-            this.button1.Text = "Данные";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnMainInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMainInfo.Location = new System.Drawing.Point(3, 160);
+            this.btnMainInfo.Margin = new System.Windows.Forms.Padding(3, 35, 3, 35);
+            this.btnMainInfo.Name = "btnMainInfo";
+            this.btnMainInfo.Size = new System.Drawing.Size(213, 56);
+            this.btnMainInfo.TabIndex = 3;
+            this.btnMainInfo.TabStop = false;
+            this.btnMainInfo.Text = "Данные";
+            this.btnMainInfo.UseVisualStyleBackColor = true;
+            this.btnMainInfo.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -438,6 +440,18 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "label7";
             // 
+            // btnAddInfo
+            // 
+            this.btnAddInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddInfo.Location = new System.Drawing.Point(3, 254);
+            this.btnAddInfo.Name = "btnAddInfo";
+            this.btnAddInfo.Size = new System.Drawing.Size(213, 57);
+            this.btnAddInfo.TabIndex = 5;
+            this.btnAddInfo.Text = "Доп. сведения";
+            this.btnAddInfo.UseVisualStyleBackColor = true;
+            this.btnAddInfo.Visible = false;
+            this.btnAddInfo.Click += new System.EventHandler(this.btnAddInfo_Click);
+            // 
             // CreateOrUpdatePaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -492,7 +506,7 @@
         private System.Windows.Forms.TextBox tbAmount;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnMainInfo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox gbCounters;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -510,5 +524,6 @@
         private System.Windows.Forms.ComboBox cmbVendors;
         private System.Windows.Forms.Label lbError;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnAddInfo;
     }
 }

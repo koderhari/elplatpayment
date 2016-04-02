@@ -14,6 +14,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
         protected static char delimiterL2=Convert.ToChar(1);
         protected static char delimiterL3 = Convert.ToChar(3);
         protected static string counterHeader = "#СЧ";
+        protected static string addInfoHeader = "#ДС";
         
         public string ErrorMessage { get; set; }
         public bool Success { get; set; }

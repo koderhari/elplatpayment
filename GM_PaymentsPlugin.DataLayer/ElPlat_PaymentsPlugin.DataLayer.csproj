@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\AccountInfo.cs" />
+    <Compile Include="Entities\AddInfo.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\PaymentCounter.cs" />
     <Compile Include="Entities\Payment.cs" />
