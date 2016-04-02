@@ -161,9 +161,6 @@ namespace ElPlat_PaymentsPlugin.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab= tabPage1;
-            //DisplayError(btnSave.TabIndex.ToString() + " " + tbAccount.TabIndex.ToString());
-            //var dec = Decimal.Parse(maskedTextBox1.Text);
-            //DisplayError(dec.ToString());
         }
         //for дополнительных сведений
         private void btnAddInfo_Click(object sender, EventArgs e)
@@ -629,6 +626,16 @@ namespace ElPlat_PaymentsPlugin.Forms
             public string VendorId { get; set; }
         }
         #endregion
+
+        private void btnAddInfo_Enter(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPage2)
+            {
+                SelectNextControl(ActiveControl, true, true, true, true);
+            };
+        }
+
+
 
 
 

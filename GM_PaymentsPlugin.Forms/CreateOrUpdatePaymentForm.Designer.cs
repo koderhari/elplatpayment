@@ -37,6 +37,7 @@
             this.flowLayoutPanelCartCommand = new System.Windows.Forms.FlowLayoutPanel();
             this.lbError = new System.Windows.Forms.Label();
             this.btnMainInfo = new System.Windows.Forms.Button();
+            this.btnAddInfo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -58,7 +59,6 @@
             this.tbAmount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnAddInfo = new System.Windows.Forms.Button();
             this.gbAddInfos = new System.Windows.Forms.GroupBox();
             this.headerPanel.SuspendLayout();
             this.commandPanel.SuspendLayout();
@@ -181,6 +181,19 @@
             this.btnMainInfo.Text = "Данные";
             this.btnMainInfo.UseVisualStyleBackColor = true;
             this.btnMainInfo.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnAddInfo
+            // 
+            this.btnAddInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddInfo.Location = new System.Drawing.Point(3, 254);
+            this.btnAddInfo.Name = "btnAddInfo";
+            this.btnAddInfo.Size = new System.Drawing.Size(213, 57);
+            this.btnAddInfo.TabIndex = 5;
+            this.btnAddInfo.Text = "Доп. сведения";
+            this.btnAddInfo.UseVisualStyleBackColor = true;
+            this.btnAddInfo.Visible = false;
+            this.btnAddInfo.Click += new System.EventHandler(this.btnAddInfo_Click);
+            this.btnAddInfo.Enter += new System.EventHandler(this.btnAddInfo_Enter);
             // 
             // panel1
             // 
@@ -430,18 +443,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // btnAddInfo
-            // 
-            this.btnAddInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddInfo.Location = new System.Drawing.Point(3, 254);
-            this.btnAddInfo.Name = "btnAddInfo";
-            this.btnAddInfo.Size = new System.Drawing.Size(213, 57);
-            this.btnAddInfo.TabIndex = 5;
-            this.btnAddInfo.Text = "Доп. сведения";
-            this.btnAddInfo.UseVisualStyleBackColor = true;
-            this.btnAddInfo.Visible = false;
-            this.btnAddInfo.Click += new System.EventHandler(this.btnAddInfo_Click);
             // 
             // gbAddInfos
             // 
