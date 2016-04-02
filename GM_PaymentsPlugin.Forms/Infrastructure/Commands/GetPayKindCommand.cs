@@ -107,6 +107,8 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
             addInfo.Id = addInfoParts[1];
             addInfo.Required = addInfoParts[2] == "no" ? false : true;
             addInfo.VendorServiceId = vendorServiceId;
+            
+            addInfo.Value= addInfoParts.Length>=5?addInfoParts[4]:"";
 
             return addInfo;
         }
