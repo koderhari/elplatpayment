@@ -93,7 +93,7 @@
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(325, 35);
             this.tbUser.TabIndex = 1;
-            this.tbUser.Text = "pst00165";
+            this.tbUser.Text = "pen00080";
             this.tbUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUser_KeyDown);
             // 
             // tbPassword
@@ -105,7 +105,7 @@
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(325, 35);
             this.tbPassword.TabIndex = 2;
-            this.tbPassword.Text = "123456";
+            this.tbPassword.Text = "hockey10";
             this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPassword_KeyDown);
             // 
             // lbErrorRegistration

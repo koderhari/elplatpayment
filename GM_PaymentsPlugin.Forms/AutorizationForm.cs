@@ -35,10 +35,10 @@ namespace ElPlat_PaymentsPlugin.Forms
 
         private void btOk_Click(object sender, EventArgs e)
         {
-            
 
-            var user=tbUser.Text;
-            var password = tbPassword.Text;
+
+            var user = tbUser.Text;//pst00165
+            var password = tbPassword.Text;//123456
 
             if (String.IsNullOrEmpty(user) && String.IsNullOrEmpty(password))
             {

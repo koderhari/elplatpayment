@@ -265,7 +265,7 @@ namespace ElPlat_PaymentsPlugin.Forms
                 }
                 else
                 {
-                    _paymentViewModel.ListPaymentCounters.Clear();
+                    _paymentViewModel.ListPaymentAddInfos.Clear();
                     btnAddInfo.Visible = false;
                 }
 
