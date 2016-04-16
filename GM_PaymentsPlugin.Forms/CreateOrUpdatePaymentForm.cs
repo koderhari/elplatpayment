@@ -288,17 +288,19 @@ namespace ElPlat_PaymentsPlugin.Forms
             int x = 20;
             int y = 20;
             int padding = 50;
+            int widthLabel = 200;
             foreach (var addInfo in addInfos)
             {
                 Label labelAddInfo = new Label();
                 labelAddInfo.Text = addInfo.Name;
-                labelAddInfo.Size = new Size(100, 25);
+                labelAddInfo.Size = new Size(widthLabel, 25);
                 labelAddInfo.Location = new Point(x, y);
+                labelAddInfo.AutoSize = true;
                 gbAddInfos.Controls.Add(labelAddInfo);
 
                 TextBox tbValue = new TextBox();
                 tbValue.Size = new Size(400, 25);
-                tbValue.Location = new Point(x + 100 + padding, y);
+                tbValue.Location = new Point(x + widthLabel + padding, y);
 
                 tbValue.DataBindings.Add("Text", addInfo, "Value", false, DataSourceUpdateMode.OnPropertyChanged);
                 tbValue.KeyDown += tbnewvalue_KeyDown;
@@ -318,6 +320,7 @@ namespace ElPlat_PaymentsPlugin.Forms
                     Required = addInfo.Required,
                     Name = addInfo.Name,
                     Id = addInfo.Id,
+                    Value=addInfo.Value
                 });
             }
             return result;

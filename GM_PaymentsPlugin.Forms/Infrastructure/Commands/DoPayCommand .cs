@@ -80,7 +80,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
         private string PrepareAddInfoData(AddInfo addInfo)
         {
             StringBuilder addInfoData = new StringBuilder();
-            addInfoData.Append(counterHeader)
+            addInfoData.Append(addInfoHeader)
                         .Append(delimiterL3).Append(addInfo.Id)
                         .Append(delimiterL3).Append(addInfo.Value);
 

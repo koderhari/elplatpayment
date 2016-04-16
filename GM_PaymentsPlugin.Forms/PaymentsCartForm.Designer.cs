@@ -130,6 +130,7 @@
             this.btnConfirm.TabStop = false;
             this.btnConfirm.Text = "F5 - подтвердить";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Visible = false;
             // 
             // btnAdd
             // 

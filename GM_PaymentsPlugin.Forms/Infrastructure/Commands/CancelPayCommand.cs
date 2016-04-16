@@ -28,7 +28,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
         public override void Execute()
         {
             StringBuilder commandString = new StringBuilder();
-            commandString.Append("confirm")
+            commandString.Append("cancel")
                 .Append(delimiterL1).Append(_user.UserName);
 
             foreach(var payment in _payments)
