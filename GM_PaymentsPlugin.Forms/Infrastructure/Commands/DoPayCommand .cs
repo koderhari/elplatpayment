@@ -65,7 +65,9 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
             .Append(payment.VendorServiceId).Append(delimiterL2)
             .Append(payment.PersonalNumber).Append(delimiterL2)
             .Append(payment.TransactionId).Append(delimiterL2)
-            .Append(payment.Amount.ToString().Replace(',','.'));
+            .Append(payment.Amount.ToString().Replace(',', '.')).Append(delimiterL2)
+            .Append(payment.AmountComission.ToString().Replace(',', '.'));
+
             foreach(var counter in payment.ListPaymentCounters)
                 paymentData.Append(delimiterL2).Append(PreparePaymentCounterData(counter));
 

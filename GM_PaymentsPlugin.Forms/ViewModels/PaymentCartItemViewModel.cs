@@ -18,5 +18,7 @@ namespace ElPlat_PaymentsPlugin.Forms.ViewModels
         public string VendorName { get; set; }
         [DisplayName("Сумма")]
         public decimal Amount { get; set; }
+        [DisplayName("Комиссия")]
+        public decimal Commission { get; set; }
     }
 }

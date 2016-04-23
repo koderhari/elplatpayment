@@ -22,6 +22,12 @@ namespace ElPlat_PaymentsPlugin.DataLayer.Entities
         public string FormatInput { get; set; }
         
         public string AccountLabel { get; set; }
+
+        public decimal CommissionPercent { get; set; }
+        public decimal NdsPercent { get; set; }
+
+        public decimal MinimalAmountComission { get; set; }
+
         public bool HasCounters 
         { 
             get 

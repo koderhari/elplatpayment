@@ -60,6 +60,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.gbAddInfos = new System.Windows.Forms.GroupBox();
+            this.lbInfoCommission = new System.Windows.Forms.Label();
             this.headerPanel.SuspendLayout();
             this.commandPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -235,6 +236,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lbInfoCommission);
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.gbCounters);
@@ -456,6 +458,15 @@
             this.gbAddInfos.TabStop = false;
             this.gbAddInfos.Text = "Доп.сведения";
             // 
+            // lbInfoCommission
+            // 
+            this.lbInfoCommission.AutoSize = true;
+            this.lbInfoCommission.Location = new System.Drawing.Point(245, 343);
+            this.lbInfoCommission.Name = "lbInfoCommission";
+            this.lbInfoCommission.Size = new System.Drawing.Size(51, 20);
+            this.lbInfoCommission.TabIndex = 7;
+            this.lbInfoCommission.Text = "label4";
+            // 
             // CreateOrUpdatePaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -529,5 +540,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAddInfo;
         private System.Windows.Forms.GroupBox gbAddInfos;
+        private System.Windows.Forms.Label lbInfoCommission;
     }
 }

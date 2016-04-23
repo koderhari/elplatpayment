@@ -87,11 +87,11 @@ namespace ElPlat_PaymentsPlugin.Forms
             
             //Amount=123.45M,ClientFullName="Василив Иоанн Петрович",VendorName="Межрегионгаз пенза" 
 
-            result.Amount=payment.Amount;
+            result.Amount=payment.Amount + payment.AmountComission;
             result.ClientFullName=payment.ClientFullName;
             result.VendorName = _paymentsService.GetVendorById(payment.VendorId).Name;
             result.Id = payment.Id;
-
+            result.Commission = payment.AmountComission;
             return result;
 
         }

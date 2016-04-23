@@ -1,6 +1,7 @@
 ﻿using ElPlat_PaymentsPlugin.DataLayer.Entities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -70,15 +71,33 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
         VendorService PrepareVendorService(string[] parts,Vendor vendor)
         {
             var currentVendorService = new VendorService();
-            currentVendorService.VendorId = vendor.VendorId;
-            currentVendorService.Id = parts[2];
-            currentVendorService.Number = parts[4];
-            currentVendorService.Name = parts[5];
-            currentVendorService.AccountLabel = parts[6];
-            currentVendorService.FormatInput = parts[7];
-            VendorServices.Add(currentVendorService);
+            try
+            {
+                currentVendorService.VendorId = vendor.VendorId;
+                currentVendorService.Id = parts[2];
+                currentVendorService.Number = parts[4];
+                currentVendorService.Name = parts[5];
+                currentVendorService.AccountLabel = parts[6];
+                currentVendorService.FormatInput = parts[7];
+                currentVendorService.CommissionPercent = string.IsNullOrEmpty(parts[8]) ? 0 : Decimal.Parse(parts[8].Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator)
+                                                    .Replace(",", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
 
-            for (var i = 8; i < parts.Length; i++)
+                currentVendorService.NdsPercent = string.IsNullOrEmpty(parts[9]) ? 0 : Decimal.Parse(parts[9].Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator)
+                                                    .Replace(",", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
+                currentVendorService.MinimalAmountComission = string.IsNullOrEmpty(parts[10]) ? 0 : Decimal.Parse(parts[10].Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator)
+                                                    .Replace(",", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
+
+
+                VendorServices.Add(currentVendorService);
+            }
+            catch (Exception e)
+            {
+                
+                throw;
+            }
+            
+
+            for (var i = 11; i < parts.Length; i++)
             {
                 if (parts[i].StartsWith(counterHeader)) 
                 {
@@ -87,7 +106,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
                 }
             }
 
-            for (var i = 8; i < parts.Length; i++)
+            for (var i = 11; i < parts.Length; i++)
             {
                 if (parts[i].StartsWith(addInfoHeader))
                 {

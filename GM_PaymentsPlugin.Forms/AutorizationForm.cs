@@ -49,29 +49,40 @@ namespace ElPlat_PaymentsPlugin.Forms
             }
             else
             {
-                SplashForm.ShowSplashScreen();
-                //Thread.Sleep(10000);
-                var result=_authenticationService.Login(new User()
-                {
-                    UserName = user,
-                    Password = password,
-                    PostUserName = "pen0234",
-                    WorkPlace = "PST4000"
 
-                });
-                if (result.Success)
+                try
                 {
-                    _IsAutorizationSuccess = true;
-                    SplashForm.CloseForm();
-                    this.Close();
+                    SplashForm.ShowSplashScreen();
+                    //Thread.Sleep(10000);
+                    var result = _authenticationService.Login(new User()
+                    {
+                        UserName = user,
+                        Password = password,
+                        PostUserName = "pen0234",
+                        WorkPlace = "PST4000"
+
+                    });
+                    if (result.Success)
+                    {
+                        _IsAutorizationSuccess = true;
+                        SplashForm.CloseForm();
+                        this.Close();
+                    }
+                    else
+                    {
+                        SplashForm.CloseForm();
+                        _IsAutorizationSuccess = false;
+                        lbErrorRegistration.Text = result.Message;
+                        lbErrorRegistration.Visible = true;
+                    }
                 }
-                else
+                catch (Exception error)
                 {
                     SplashForm.CloseForm();
-                    _IsAutorizationSuccess = false;
-                    lbErrorRegistration.Text = result.Message;
-                    lbErrorRegistration.Visible = true;
+                    
+                    throw;
                 }
+               
             }
 
         }

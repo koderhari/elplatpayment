@@ -132,6 +132,7 @@ namespace ElPlat_PaymentsPlugin.Forms
             if (IsValid())
             {
                 var payment = _paymentViewModel.ToModel();
+                CalculateCommission(payment);
                 //_payment.ClientFullName = _paymentViewModel.PersonalNumber;
                 try
                 {
@@ -154,6 +155,26 @@ namespace ElPlat_PaymentsPlugin.Forms
                 
                 
             }
+        }
+
+        private void CalculateCommission(DataLayer.Entities.Payment payment)
+        {
+            var vendorService=_paymentService.GetVendorServiceById(payment.VendorServiceId);
+            if (vendorService.CommissionPercent <= 0) return;
+
+            payment.AmountComission = (payment.Amount * vendorService.CommissionPercent) / 100;
+            payment.AmountComission = Math.Round(payment.AmountComission, 2);
+            payment.AmountComission = Math.Truncate(payment.AmountComission * 100) / 100;
+            if (payment.AmountComission < vendorService.MinimalAmountComission)
+                payment.AmountComission = vendorService.MinimalAmountComission;
+            if (vendorService.NdsPercent > 0)
+            {
+                var nds = payment.AmountComission * vendorService.NdsPercent/ 100;
+                payment.AmountComission +=nds;
+                payment.AmountComission = Math.Round(payment.AmountComission, 2);
+                payment.AmountComission = Math.Truncate(payment.AmountComission * 100) / 100;
+            }
+
         }
 
 
@@ -269,11 +290,28 @@ namespace ElPlat_PaymentsPlugin.Forms
                     btnAddInfo.Visible = false;
                 }
 
+                if (selectService.CommissionPercent > 0)
+                {
+                    LoadCommissionInfo(selectService);
+                }
+                else
+                {
+                    lbInfoCommission.Text = "";
+                    lbInfoCommission.Visible = false;
+                }
+
+
             }
             lbAccountLabel.Text = selectService.AccountLabel;
             tbAccount.MaxLength = FormatHelper.GetLengthFromFormat(selectService.FormatInput);
             ClearPersonalInfo();
                 
+        }
+
+        private void LoadCommissionInfo(VendorService selectService)
+        {
+            lbInfoCommission.Text = String.Format("Комисcия {0} %", selectService.CommissionPercent);
+            lbInfoCommission.Visible = true;
         }
 
 
