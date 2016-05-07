@@ -12,6 +12,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
         public List<Vendor> Vendors { get; set; }
         public List<VendorService> VendorServices { get; set; }
         public string PostIndex { get; set; }
+        public int WorkingPort { get; set; }
 
 
         User _user;
@@ -42,8 +43,9 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
         void ProccessData(string data)
         {
             var parts = data.Split(delimiterL1);
-            PostIndex = parts[1];
-            for (var i = 2; i < parts.Length; i++)
+            PostIndex = parts[2];
+            WorkingPort =Int32.Parse(parts[1]);
+            for (var i = 3; i < parts.Length; i++)
             {
                 var serviceParts = parts[i].Split(delimiterL2);
                 var currentVendor = PrepareVendor(serviceParts);

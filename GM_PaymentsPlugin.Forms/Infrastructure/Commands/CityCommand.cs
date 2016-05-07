@@ -26,7 +26,8 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
         public CityCommand(string ip,int port)
         {
             IPEndPoint ipep =
-                      new IPEndPoint(IPAddress.Parse("1.1.254.12"), 41007);
+                      //new IPEndPoint(IPAddress.Parse("1.1.254.12"), 41007);
+                        new IPEndPoint(IPAddress.Parse(ip), port);
             server = new Socket(AddressFamily.InterNetwork,
                               SocketType.Stream, ProtocolType.Tcp);
             server.Connect(ipep);

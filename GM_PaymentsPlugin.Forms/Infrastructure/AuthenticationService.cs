@@ -61,6 +61,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure
                 {
                     PaymentService.InitData(command.Vendors, command.VendorServices);
                     user.PostIndex = command.PostIndex;
+                    SettingService.WorkingPort = command.WorkingPort;
                 }
                     
             }

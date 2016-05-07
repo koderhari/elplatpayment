@@ -173,7 +173,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure
 
         public AccountInfo CheckPay(CheckPayCommandParams param)
         {
-            using (var command = new CheckPayCommand(_settingService.GetServerIP(), _settingService.GetPort(), _currentUser, param))
+            using (var command = new CheckPayCommand(_settingService.GetServerIP(), SettingService.WorkingPort, _currentUser, param))
             {
                 command.Execute();
                 if (!command.Success)
@@ -207,7 +207,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure
         public void AddPay(Payment payment)
         {
 
-            using (var command = new DoPayCommand(_settingService.GetServerIP(), _settingService.GetPort(), _currentUser, new List<Payment>() { payment }))
+            using (var command = new DoPayCommand(_settingService.GetServerIP(), SettingService.WorkingPort, _currentUser, new List<Payment>() { payment }))
             {
                 command.Execute();
                 if (!command.Success)
@@ -242,7 +242,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure
         public void DeletePayment(string id)
         {
             using (var command = new CancelPayCommand(_settingService.GetServerIP(),
-                                                  _settingService.GetPort(),
+                                                  SettingService.WorkingPort,
                                                   _currentUser,
                                                   new List<Payment>() { new Payment { TransactionId = id } }))
             {
@@ -265,7 +265,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure
          public void CancelPayment(string transactionId)
          {
             using (var command = new CancelPayCommand(_settingService.GetServerIP(),
-                                                 _settingService.GetPort(),
+                                                 SettingService.WorkingPort,
                                                  _currentUser,
                                                  new List<Payment>() { new Payment { TransactionId = transactionId } }))
             {
@@ -287,8 +287,8 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure
 
         public void ConfirmPay(string transactionId)
         {
-            using (var command = new ConfirmPay(_settingService.GetServerIP(), 
-                                                _settingService.GetPort(), 
+            using (var command = new ConfirmPay(_settingService.GetServerIP(),
+                                                SettingService.WorkingPort, 
                                                 _currentUser, 
                                                 new List<Payment>() { new Payment { TransactionId = transactionId } }))
             {
@@ -315,7 +315,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure
 
 
             using (var command = new BarcodeCommand(_settingService.GetServerIP(),
-                                               _settingService.GetPort(),
+                                               SettingService.WorkingPort,
                                                _currentUser,
                                                barcode))
             {

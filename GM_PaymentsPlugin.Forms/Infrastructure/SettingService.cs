@@ -15,6 +15,20 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure
         string fileName = "";
         string _serverIp;
         int _port;
+        static int _workingPort; 
+        public static int WorkingPort 
+        {
+            get
+            {
+               
+                return _workingPort;
+            }
+
+            set 
+            {
+                _workingPort = value;
+            }
+        }
 
 
         public SettingService(string filename)
