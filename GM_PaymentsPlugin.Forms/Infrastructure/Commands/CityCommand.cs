@@ -17,7 +17,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
         protected static char delimiterL3 = Convert.ToChar(3);
         protected static string counterHeader = "#СЧ";
         protected static string addInfoHeader = "#ДС";
-        protected static byte ZipFlag = (byte)33;
+        protected static byte ZipFlag = (byte)31;
         
         public string ErrorMessage { get; set; }
         public bool Success { get; set; }
@@ -49,7 +49,15 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
                 Success = false;
                 ErrorMessage = parts[1];
             }
-            else Success = true;
+            else if (parts[0] == "TRUE")
+            {
+                Success = true;
+            }
+            else
+            {
+                Success = false;
+                ErrorMessage = "В заголовке протокола нет FALSE или TRUE тега";
+            }
         }
 
         protected string Receive()
@@ -66,7 +74,9 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
                 {
                     int bytesRec = server.Receive(bytes);
                     if (bytesRec == 0) break;
-                    allBytes.AddRange(bytes);
+                    byte[] b = new byte[bytesRec];
+                    Array.Copy(bytes, 0, b, 0, bytesRec);
+                    allBytes.AddRange(b);
                 }
                 catch
                 {
@@ -92,8 +102,12 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
 
         private List<byte> UnCompressBytes(List<byte> allBytes)
         {
-            byte[] data=new byte[allBytes.Count - 1];
-            allBytes.CopyTo(1, data, 0, data.Length);
+            //byte[] data=new byte[allBytes.Count - 1];
+            //allBytes.CopyTo(1, data, 0, data.Length);
+
+            byte[] data = new byte[allBytes.Count];
+            allBytes.CopyTo(0, data, 0, data.Length);
+            File.WriteAllBytes("1.gzip", data);
             return Decompress(data).ToList();
 
         }

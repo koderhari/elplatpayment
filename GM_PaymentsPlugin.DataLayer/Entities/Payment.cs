@@ -52,6 +52,9 @@ namespace ElPlat_PaymentsPlugin.DataLayer.Entities
 
         public string VendorServiceNumber { get; set; }
 
+        public string INNOptional { get; set; }
+        public string KPPOptional { get; set; }
+
         public List<PaymentCounter> ListPaymentCounters {get;set;}
 
 

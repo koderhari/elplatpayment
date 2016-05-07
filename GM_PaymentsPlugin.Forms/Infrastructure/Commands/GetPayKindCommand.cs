@@ -60,10 +60,15 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
             if (currentVendor == null)
             {
                 currentVendor = new Vendor();
-                currentVendor.Number = parts[0];
-                currentVendor.VendorId = parts[1];
-                currentVendor.Name = parts[3];
-                Vendors.Add(currentVendor);
+               
+                    currentVendor.Number = parts[0];
+                    currentVendor.VendorId = parts[1];
+                    currentVendor.Name = parts[3];
+                    currentVendor.INN = parts[11];
+                    currentVendor.KPP = parts[12];
+                    Vendors.Add(currentVendor);
+
+                
             }
             return currentVendor;
         }
@@ -97,7 +102,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
             }
             
 
-            for (var i = 11; i < parts.Length; i++)
+            for (var i = 13; i < parts.Length; i++)
             {
                 if (parts[i].StartsWith(counterHeader)) 
                 {
@@ -106,7 +111,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
                 }
             }
 
-            for (var i = 11; i < parts.Length; i++)
+            for (var i = 14; i < parts.Length; i++)
             {
                 if (parts[i].StartsWith(addInfoHeader))
                 {
