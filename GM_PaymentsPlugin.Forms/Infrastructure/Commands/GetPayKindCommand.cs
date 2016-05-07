@@ -113,7 +113,7 @@ namespace ElPlat_PaymentsPlugin.Forms.Infrastructure.Commands
                 }
             }
 
-            for (var i = 14; i < parts.Length; i++)
+            for (var i = 13; i < parts.Length; i++)
             {
                 if (parts[i].StartsWith(addInfoHeader))
                 {
